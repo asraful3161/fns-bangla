@@ -1,3 +1,4 @@
+{{-- 
 @extends('layouts.app')
 
 @section('content')
@@ -68,6 +69,7 @@
 </div>
 @endsection
 
+--}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +90,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('vendor/sb-admin-2/css/sb-admin-2.min.css') }}" rel="stylesheet">
-  
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -108,45 +110,38 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login Please!</h1>
+                    <h1 class="h4 text-gray-900 my-5">Login Please!</h1>
                   </div>
                   <form method="POST" action="{{ route('login') }}">
 
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="username" placeholder="Enter Username..." value="{{ old('username') }}">
                     </div>
 
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="password" placeholder="Enter Your Password...">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group mt-5">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                        <label class="custom-control-label" for="customCheck" name="remember" {{ old('remember') ? 'checked' : '' }}>Remember Me</label>
                       </div>
                     </div>
 
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
                       Login
-                    </a>
+                    </button>
 
-                    <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Login with Google
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                    </a>
                   </form>
                   <hr>
-                  <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  <div class="text-center mt-5">
+                    <a class="small" href="{{ url('/') }}">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="register.html">Create an Account!</a>
+                    <a class="small" href="{{ url('/') }}">Create an Account!</a>
                   </div>
                 </div>
               </div>
